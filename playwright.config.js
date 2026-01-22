@@ -8,7 +8,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
-  timeout: 40 * 1000,
+  timeout: 20 * 1000,
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -16,9 +16,11 @@ export default defineConfig({
   reporter: 'html',
   use: {
 
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     browserName: 'chromium',
     headless: false,
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
 }
 });
 

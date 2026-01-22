@@ -23,7 +23,9 @@ test.describe('My first test suite', () => {
     await CheckBox.check();
     await employeeStatus.check();
     await gender.selectOption('Male');
-
+    await page.getByText("Success! The Form has been submitted successfully!.").isVisible();
+    await page.getByRole("link",{name : "Shop"}).click();
+    await page.locator("app-card").filter({hasText: 'Nokia Edge'}).getByRole("button").click();
   });
 
 });
